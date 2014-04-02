@@ -19,7 +19,7 @@ var options = require('optimist')
 			  .describe('t', 'Standup meeting time; if not defined, split time is midnight')
 			  .alias('n', 'name')
 			  .describe('n', 'Name of the sprint')
-			  .alias('boardId', 'boardId')
+			  .alias('b', 'boardId')
 			  .describe('boardId', 'ID of the board on trello (take from URL)')
 			  .alias('s', 'save')
 			  .describe('s', 'Save configuration')
@@ -42,7 +42,7 @@ var finishedLists = optionArgs.f;
 var standupTime = optionArgs.t;
 var name = optionArgs.n;
 var save = optionArgs.s;
-var boardId = optionArgs.boardId || settings.boardId;
+var boardId = optionArgs.b;
 
 if (!lists || !lists.length) 
 {
