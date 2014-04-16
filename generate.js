@@ -27,11 +27,22 @@ var options = require('optimist')
 
 var optionArgs = options.argv;
 var path = require('path');
+var fs = require('fs');
 
 global.settings = require('./settings');
 settings.root   = __dirname.replace(/\/+$/, "");
 settings.exportPath = path.join(settings.root, 'export');
 settings.configPath = path.join(settings.root, 'config');
+
+// if export path does not exist, create it
+if (!fs.existsSync(settings.exportPath)) {
+	fs.mkdirSync(settings.exportPath);
+}
+
+// if config path does not exist, create it
+if (!fs.existsSync(settings.configPath)) {
+	fs.mkdirSync(settings.configPath);
+}
 
 var Helper = require('./lib/helper');
 
